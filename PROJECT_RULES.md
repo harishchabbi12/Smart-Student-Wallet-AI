@@ -1,56 +1,72 @@
 # Smart Student Wallet AI
 
-Version: 1.0
+> Version: 1.0
+> Status: Planning Phase
 
 ---
 
-# 1. Project Overview
+# 1. Project Vision
 
 ## Project Name
 
 Smart Student Wallet AI
 
-## Project Description
+## Mission
 
-Smart Student Wallet AI is an AI-powered digital wallet and expense tracking application specially designed for college students.
-
-The application allows students to:
-
-- Manage their virtual wallet.
-- Make simulated transactions.
-- Categorize every expense.
-- Track spending habits.
-- View financial analytics.
-- Receive AI-powered financial advice.
-- Predict future expenses.
-- Improve saving habits.
+To build an AI-powered digital wallet and expense management platform that helps college students spend smarter, save more, and understand their financial habits through intelligent insights.
 
 ---
 
-# 2. Project Objective
+# 2. Problem Statement
 
-Our goal is to build a real-world MERN Stack application that demonstrates:
+Most students spend money without tracking where it goes.
 
-- Full Stack Development
-- REST APIs
-- Authentication
-- MongoDB Database Design
-- AI Integration
-- Professional Software Architecture
+Current expense trackers only store expenses.
 
-This project should be production-ready and suitable for:
+Our application should not only record transactions but also:
 
-- College Project
-- Portfolio
-- Internship
-- Placement
-- Startup MVP
+- Analyze spending
+- Predict future expenses
+- Warn before overspending
+- Suggest ways to save money
+- Improve financial discipline
 
 ---
 
-# 3. Tech Stack
+# 3. Target Users
 
-Frontend
+- College Students
+- Hostel Students
+- Freshers
+- Students receiving monthly pocket money
+
+---
+
+# 4. Project Goals
+
+Our application must demonstrate:
+
+✅ MERN Stack Development
+
+✅ Authentication
+
+✅ Database Design
+
+✅ REST APIs
+
+✅ AI Integration
+
+✅ Dashboard Analytics
+
+✅ Clean UI
+
+✅ Deployment
+
+---
+
+# 5. Tech Stack
+
+## Frontend
 
 - React.js
 - Vite
@@ -58,64 +74,42 @@ Frontend
 - Axios
 - Tailwind CSS
 
-Backend
+## Backend
 
 - Node.js
 - Express.js
 
-Database
+## Database
 
 - MongoDB Atlas
 - Mongoose
 
-Authentication
+## Authentication
 
 - JWT
 - bcrypt
 
-AI
+## AI
 
 - OpenAI API (or compatible LLM)
 
-Charts
+## Charts
 
 - Recharts
 
-Deployment
+## Deployment
 
-Frontend
+Frontend → Vercel
 
-- Vercel
+Backend → Render
 
-Backend
-
-- Render
-
-Database
-
-- MongoDB Atlas
+Database → MongoDB Atlas
 
 ---
 
-# 4. Team Members
+# 6. Core Features
 
-Member 1
-
-Authentication & User Management
-
-Member 2
-
-Wallet & Expense Management
-
-Member 3
-
-AI & Analytics
-
----
-
-# 5. Core Features
-
-Authentication
+## Authentication
 
 - Register
 - Login
@@ -123,44 +117,79 @@ Authentication
 - Profile
 - Update Profile
 
-Wallet
+---
+
+## Wallet
 
 - Wallet Balance
 - Add Money (Simulation)
-- Make Transaction
-
-Expense
-
-- Add Expense
-- Edit Expense
-- Delete Expense
-- Categories
-- Transaction History
-
-Budget
-
-- Monthly Budget
-- Remaining Budget
-- Spending Alerts
-
-Dashboard
-
-- Charts
-- Analytics
-- Monthly Summary
-
-AI
-
-- AI Chat
-- Expense Prediction
-- Savings Advice
-- Financial Health Score
-- Weekly Report
-- Monthly Report
+- Wallet History
 
 ---
 
-# 6. Folder Structure
+## Transactions
+
+- Make Payment
+- Expense Categories
+- Notes
+- Receiver
+- Date
+- Transaction History
+
+---
+
+## Dashboard
+
+- Wallet Balance
+- Total Expenses
+- Monthly Budget
+- Remaining Budget
+- Recent Transactions
+- Charts
+
+---
+
+## AI Features
+
+- Expense Prediction
+- Monthly Report
+- Weekly Report
+- AI Chat Assistant
+- Saving Suggestions
+- Financial Health Score
+- Budget Recommendation
+
+---
+
+# 7. Future Features
+
+- Receipt Scanner
+- Voice Transactions
+- UPI Integration
+- AI Goal Planner
+- Investment Suggestions
+
+---
+
+# 8. Team Responsibilities
+
+Member 1
+
+Authentication Module
+
+Member 2
+
+Wallet Module
+
+Member 3
+
+AI Module
+
+No member should edit another member's module without discussion.
+
+---
+
+# 9. Folder Structure
 
 Smart-Student-Wallet-AI
 
@@ -178,6 +207,8 @@ DATABASE.md
 
 API.md
 
+SYSTEM_ARCHITECTURE.md
+
 UI_GUIDE.md
 
 AI_GUIDE.md
@@ -190,50 +221,43 @@ CHANGELOG.md
 
 ---
 
-# 7. Branch Strategy
+# 10. Branch Strategy
 
 main
 
-Production Ready Code
+Production
 
 develop
 
-Integration Branch
+Testing
 
 feature/auth
 
-Authentication Module
-
 feature/wallet
-
-Wallet Module
 
 feature/ai
 
-AI Module
-
 ---
 
-# 8. Coding Standards
+# 11. Coding Standards
 
+- Use MVC Architecture
 - Use camelCase
-- Follow MVC Architecture
-- Use REST APIs
 - Use meaningful variable names
-- Write reusable components
-- Add comments only when necessary
-- Keep code modular
-- Follow consistent folder structure
+- Follow REST API principles
+- Write modular code
+- Do not duplicate code
+- Write reusable React components
 
 ---
 
-# 9. API Rules
+# 12. API Rules
 
 Every endpoint starts with
 
 /api/
 
-Example
+Examples
 
 /api/auth/login
 
@@ -245,45 +269,33 @@ Example
 
 /api/ai/chat
 
-Do not rename APIs without team discussion.
+Do not rename APIs after development starts.
 
 ---
 
-# 10. Database Rules
+# 13. Database Rules
 
-Field names must remain consistent.
+Never rename database fields without team approval.
 
-Do not rename existing fields.
+Use ObjectId relationships.
 
-Every collection must contain timestamps.
-
-Use ObjectId for relationships.
+Enable timestamps for every collection.
 
 ---
 
-# 11. Git Rules
+# 14. Git Rules
 
 Never push directly to main.
 
-Always work in feature branches.
+Always create commits with meaningful messages.
 
-Merge into develop first.
+Merge feature branch → develop
 
-After testing merge into main.
-
-Commit messages must be meaningful.
-
-Example
-
-feat: Add Login API
-
-fix: Fix Dashboard Chart
-
-docs: Update API Documentation
+After testing → main
 
 ---
 
-# 12. Integration Rules
+# 15. Integration Rules
 
 Before changing
 
@@ -291,20 +303,9 @@ Before changing
 - API
 - Folder Structure
 
-Discuss with all team members.
+Discuss with the whole team.
 
-No member should modify another member's module without permission.
-
----
-
-# 13. Future Scope
-
-- OCR Receipt Scanner
-- Voice Transactions
-- UPI Integration
-- AI Budget Planner
-- Financial Goal Tracking
-- Investment Suggestions
+Any change affecting another module must be approved first.
 
 ---
 
