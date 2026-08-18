@@ -7,6 +7,7 @@ import Transactions from "../pages/Transactions/Transactions";
 import Analytics from "../pages/Analytics/Analytics";
 import AI from "../pages/AI/AI";
 import Profile from "../pages/Profile/Profile";
+import SubscriptionPlans from "../pages/Subscription/SubscriptionPlans";
 import ProtectedRoute from "../components/ProtectedRoute";
 
 function AppRoutes() {
@@ -60,6 +61,16 @@ function AppRoutes() {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Premium */}
+        <Route
+          path="/subscription"
+          element={
+            <ProtectedRoute>
+              <SubscriptionPlans />
             </ProtectedRoute>
           }
         />
