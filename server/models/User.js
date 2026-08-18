@@ -18,7 +18,29 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+
+    subscription: {
+        plan: {
+            type: String,
+            enum: ["FREE", "PRO"],
+            default: "FREE"
+        },
+        status: {
+            type: String,
+            enum: ["ACTIVE", "EXPIRED"],
+            default: "ACTIVE"
+        },
+        startedAt: {
+            type: Date,
+            default: Date.now
+        },
+        expiresAt: {
+            type: Date,
+            default: null
+        }
     }
+
 }, {
     timestamps: true
 });
