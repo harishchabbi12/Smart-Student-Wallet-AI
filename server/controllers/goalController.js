@@ -1,6 +1,8 @@
 const Goal = require("../models/Goal");
 
-// Create a new goal
+// ======================================================
+// CREATE A NEW GOAL
+// ======================================================
 const createGoal = async (req, res) => {
   try {
     const {
@@ -42,7 +44,9 @@ const createGoal = async (req, res) => {
   }
 };
 
-// Get all goals of logged-in user
+// ======================================================
+// GET ALL GOALS OF LOGGED-IN USER
+// ======================================================
 const getGoals = async (req, res) => {
   try {
     const goals = await Goal.find({
@@ -61,7 +65,65 @@ const getGoals = async (req, res) => {
   }
 };
 
-// Get one goal
+// ======================================================
+// GET GOAL SUMMARY
+// ======================================================
+const getGoalSummary = async (req, res) => {
+  try {
+    const goals = await Goal.find({
+      user: req.user.id,
+      status: { $ne: "CANCELLED" },
+    });
+
+    const totalGoals = goals.length;
+
+    const activeGoals = goals.filter(
+      (goal) => goal.status === "ACTIVE"
+    ).length;
+
+    const completedGoals = goals.filter(
+      (goal) => goal.status === "COMPLETED"
+    ).length;
+
+    const totalTargetAmount = goals.reduce(
+      (total, goal) => total + goal.targetAmount,
+      0
+    );
+
+    const totalSavedAmount = goals.reduce(
+      (total, goal) => total + goal.currentAmount,
+      0
+    );
+
+    const overallProgress =
+      totalTargetAmount > 0
+        ? Number(
+            ((totalSavedAmount / totalTargetAmount) * 100).toFixed(2)
+          )
+        : 0;
+
+    res.status(200).json({
+      success: true,
+      summary: {
+        totalGoals,
+        activeGoals,
+        completedGoals,
+        totalTargetAmount,
+        totalSavedAmount,
+        overallProgress,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// ======================================================
+// GET ONE GOAL
+// ======================================================
 const getGoalById = async (req, res) => {
   try {
     const goal = await Goal.findOne({
@@ -88,7 +150,9 @@ const getGoalById = async (req, res) => {
   }
 };
 
-// Update a goal
+// ======================================================
+// UPDATE A GOAL
+// ======================================================
 const updateGoal = async (req, res) => {
   try {
     const goal = await Goal.findOne({
@@ -112,12 +176,29 @@ const updateGoal = async (req, res) => {
       status,
     } = req.body;
 
-    if (title !== undefined) goal.title = title;
-    if (targetAmount !== undefined) goal.targetAmount = targetAmount;
-    if (currentAmount !== undefined) goal.currentAmount = currentAmount;
-    if (deadline !== undefined) goal.deadline = deadline;
-    if (category !== undefined) goal.category = category;
-    if (status !== undefined) goal.status = status;
+    if (title !== undefined) {
+      goal.title = title;
+    }
+
+    if (targetAmount !== undefined) {
+      goal.targetAmount = targetAmount;
+    }
+
+    if (currentAmount !== undefined) {
+      goal.currentAmount = currentAmount;
+    }
+
+    if (deadline !== undefined) {
+      goal.deadline = deadline;
+    }
+
+    if (category !== undefined) {
+      goal.category = category;
+    }
+
+    if (status !== undefined) {
+      goal.status = status;
+    }
 
     await goal.save();
 
@@ -134,7 +215,9 @@ const updateGoal = async (req, res) => {
   }
 };
 
-// Delete a goal
+// ======================================================
+// DELETE A GOAL
+// ======================================================
 const deleteGoal = async (req, res) => {
   try {
     const goal = await Goal.findOneAndDelete({
@@ -161,9 +244,13 @@ const deleteGoal = async (req, res) => {
   }
 };
 
+// ======================================================
+// EXPORT CONTROLLERS
+// ======================================================
 module.exports = {
   createGoal,
   getGoals,
+  getGoalSummary,
   getGoalById,
   updateGoal,
   deleteGoal,

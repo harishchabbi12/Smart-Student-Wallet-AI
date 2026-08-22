@@ -10,21 +10,43 @@ const {
   getGoalById,
   updateGoal,
   deleteGoal,
+  getGoalSummary,
 } = require("../controllers/goalController");
 
-// Create a new goal
+// ======================================================
+// CREATE A NEW GOAL
+// POST /api/goals
+// ======================================================
 router.post("/", authMiddleware, createGoal);
 
-// Get all goals for logged-in user
+// ======================================================
+// GET GOAL SUMMARY
+// GET /api/goals/summary
+// ======================================================
+router.get("/summary", authMiddleware, getGoalSummary);
+
+// ======================================================
+// GET ALL GOALS FOR LOGGED-IN USER
+// GET /api/goals
+// ======================================================
 router.get("/", authMiddleware, getGoals);
 
-// Get one goal
+// ======================================================
+// GET ONE GOAL
+// GET /api/goals/:id
+// ======================================================
 router.get("/:id", authMiddleware, getGoalById);
 
-// Update a goal
+// ======================================================
+// UPDATE A GOAL
+// PUT /api/goals/:id
+// ======================================================
 router.put("/:id", authMiddleware, updateGoal);
 
-// Delete a goal
+// ======================================================
+// DELETE A GOAL
+// DELETE /api/goals/:id
+// ======================================================
 router.delete("/:id", authMiddleware, deleteGoal);
 
 module.exports = router;
